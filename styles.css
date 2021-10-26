@@ -1,0 +1,163 @@
+@font-face {
+    font-family: aventura;
+    src: url(fonts/Adventure.otf);
+}
+
+@font-face {
+    font-family: numeros;
+    src: url(fonts/ArchitectsDaughter-Regular.ttf);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+body, html {
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;   
+}
+
+#fondo {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: none;
+}
+
+#titulo {
+    font-family: aventura;
+    color: rgb(97, 201, 236);
+    font-size: 15rem;   
+    text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black, 4px 4px 8px black; 
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+#contenedor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#numeros {
+    width: 100px;    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center; 
+    overflow: hidden;   
+}
+
+.numero {
+    width: 70px;
+    height: 70px;
+    border: 4px solid black;
+    border-radius: 35px;
+    font-family: numeros;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 65px;
+    background-color: white;
+    margin: 10px;
+}
+
+.numero:hover {
+    background-color: rgb(247, 95, 95);
+    cursor: pointer;
+}
+
+#tablero {
+    width: 700px;        
+    height: 700px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."
+    ". . . . . . . . ."; 
+}
+
+.casilla {
+    width: auto;
+    height: auto;
+    grid-area: auto;
+    justify-self: normal;
+    align-self: stretch;
+    border: 2px solid black;    
+    font-family: numeros;
+    text-align: center;
+    font-size: 40px;    
+    font-weight: bold;    
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.casilla:hover {
+    background-color: rgb(97, 201, 236);
+}
+
+.arriba {
+    border-top: 4px solid black;
+}
+
+.abajo {
+    border-bottom: 4px solid black;
+}
+
+.izquierda {
+    border-left: 4px solid black;
+}
+
+.derecha {
+    border-right: 4px solid black;
+}
+
+#botonera {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#resolver,#borrar {
+    padding: 10px 20px;
+    font-size: 40px;
+    font-family: numeros;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#resolver:hover,#borrar:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
