@@ -190,7 +190,7 @@ class Sudoku {
                 sudoku[i][j].elemento.style.color = "black";
                 sudoku[i][j].numero = numero;
             },tiempo);
-        });
+        });        
     }
 }
 
@@ -233,12 +233,32 @@ window.onload = function() {
     });
 
     document.getElementById("borrar").addEventListener("click",resetear);
-    document.getElementById("resolver").addEventListener("click",resolverSudoku);    
+    document.getElementById("resolver").addEventListener("click",resolverSudoku);
+    document.getElementById("icono").addEventListener("mouseover",function() {        
+        document.getElementById("instrucciones").style.display = "block";
+    });   
+    document.getElementById("icono").addEventListener("mouseleave",function() {
+        document.getElementById("instrucciones").style.display = "none";
+    });
+    let span = document.getElementById("close");
+    span.addEventListener("click",function() {
+        modal.style.display = "none";
+    });
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("modal")) {
+          modal.style.display = "none";
+        }
+    }
 }
 
 
 // EVENTOS
 function resolverSudoku() {
+    this.disabled = true;
+    if (document.getElementsByClassName("seleccionado")[0]) {
+        document.getElementsByClassName("seleccionado")[0].style.backgroundColor = "white";
+        document.getElementsByClassName("seleccionado")[0].classList.remove("seleccionado");
+    }
     let tablero = new Sudoku();    
     let numeros = [1,2,3,4,5,6,7,8,9];
     tablero.sudoku.flat().forEach((casilla,indice)=>{
@@ -253,7 +273,7 @@ function resolverSudoku() {
             tablero.intervalos[indice] = null;
         }       
     });
-    console.log(tablero.intervalos);
+    
     do {
         tablero.reducirPosibilidades();
     } while (tablero.cambios)
@@ -265,8 +285,27 @@ function resolverSudoku() {
         }
         while (cambios)
     }
+    
     tablero.ponerSoluciones();
+
+    if (!tablero.finalizado()) {
+        setTimeout(()=> {
+            tablero.intervalos.forEach(intervalo=>{
+                if (intervalo) clearInterval(intervalo);
+            });
+            tablero.sudoku.flat().forEach(casilla=>{
+                if (!casilla.valor) {
+                    casilla.numero = "";
+                    casilla.elemento.style.color = "black";
+                }
+            });
+            document.getElementById("resolver").disabled = false;
+            let modal = document.getElementById("modal");            
+            modal.style.display = "block"; 
+        },tablero.soluciones.length*100+550);
+    }
 }
+
 
 
 function resetear() {
@@ -274,6 +313,9 @@ function resetear() {
     casillas.forEach((casilla)=>{
         casilla.textContent = "";
     });
+    if (document.getElementById("resolver").disabled) {
+        document.getElementById("resolver").disabled = false;
+    }
 }
 
 function aniadirNumero() {
