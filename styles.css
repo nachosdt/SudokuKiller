@@ -254,8 +254,8 @@ body, html {
         width: auto;
         height: auto;
         position: fixed;
-        top: -500px;
-        left: -500px;
+        top: -600px;
+        left: -800px;
     }
 
     #titulo {        
@@ -287,6 +287,18 @@ body, html {
 
     #instrucciones {
         width: 90%;
+        padding: 25px;
+    }
+
+    #instrucciones p {        
+        font-size: x-large;        
+        letter-spacing: 1px;        
+    }
+
+    #modal-content p {
+        font-size: x-large;        
+        letter-spacing: 1px;
+        margin-top: 70px;        
     }
     
 }
@@ -294,7 +306,7 @@ body, html {
 /* On screens that are 600px wide or less */
 @media screen and (max-width: 600px) {
     #titulo {        
-        font-size: 7rem;         
+        font-size: 6rem;         
     }
 
     #numeros {
@@ -347,6 +359,16 @@ body, html {
         padding: 8px 16px;
         margin: 15px;
         font-size: 30px;        
+    }
+
+    #instrucciones p {        
+        font-size: large;        
+          
+    }
+
+    #modal-content p {
+        font-size: large;       
+          
     }
     
 }

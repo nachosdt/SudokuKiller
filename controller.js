@@ -234,12 +234,23 @@ window.onload = function() {
 
     document.getElementById("borrar").addEventListener("click",resetear);
     document.getElementById("resolver").addEventListener("click",resolverSudoku);
-    document.getElementById("icono").addEventListener("mouseover",function() {        
-        document.getElementById("instrucciones").style.display = "block";
-    });   
-    document.getElementById("icono").addEventListener("mouseleave",function() {
-        document.getElementById("instrucciones").style.display = "none";
-    });
+    
+    if (window.screen.width > 992) { 
+        document.getElementById("icono").addEventListener("mouseover",function() {        
+            document.getElementById("instrucciones").style.display = "block";
+        });   
+        document.getElementById("icono").addEventListener("mouseleave",function() {
+            document.getElementById("instrucciones").style.display = "none";
+        });
+    } else {
+        document.getElementById("icono").addEventListener("click",function() {        
+            if (document.getElementById("instrucciones").style.display === "block") {
+                document.getElementById("instrucciones").style.display = "none";
+            } else { 
+                document.getElementById("instrucciones").style.display = "block";
+            }
+        });
+    }
     let span = document.getElementById("close");
     span.addEventListener("click",function() {
         modal.style.display = "none";
