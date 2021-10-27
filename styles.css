@@ -23,7 +23,7 @@ body, html {
 
 #fondo {
     width: 100%;
-    height: 100%;
+    height: 100%;    
     z-index: -1;
     display: none;
 }
@@ -149,6 +149,7 @@ body, html {
 
 #resolver,#borrar {
     padding: 10px 20px;
+    margin: 30px;
     font-size: 40px;
     font-family: numeros;
     background-color: white;
@@ -239,3 +240,113 @@ body, html {
     text-decoration: none;
     cursor: pointer;
   }
+
+
+/* On screens that are 992px wide or less */
+@media screen and (max-width: 992px) {
+    html,body {
+        width: 100%;
+        height: 100%; 
+        overflow: scroll;
+    }
+
+    #fondo {
+        width: auto;
+        height: auto;
+        position: fixed;
+        top: -500px;
+        left: -500px;
+    }
+
+    #titulo {        
+        font-size: 10rem;         
+    }
+
+    #contenedor {
+        width: 100%;
+        height: auto;        
+        flex-direction: column;
+        justify-content: space-around;        
+    }
+
+    #numeros {
+        width: 60%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 50px 0;        
+    }
+
+    #tablero {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    #botonera {        
+        flex-direction: row;        
+    }
+
+    #instrucciones {
+        width: 90%;
+    }
+    
+}
+  
+/* On screens that are 600px wide or less */
+@media screen and (max-width: 600px) {
+    #titulo {        
+        font-size: 7rem;         
+    }
+
+    #numeros {
+        width: 80%;
+        margin: 60px 0 20px 0;             
+    }
+
+    .numero {
+        width: 60px;
+        height: 60px;
+        border: 3px solid black;
+        border-radius: 30px;        
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 55px;        
+        margin: 10px;
+    }
+
+    #tablero {
+        width: 100vw;
+        height: 100vw;
+    }
+
+    .casilla {
+        font-size: 20px; 
+        border: 1px solid black;         
+    }
+
+    .arriba {
+        border-top: 2px solid black;
+    }
+    
+    .abajo {
+        border-bottom: 2px solid black;
+    }
+    
+    .izquierda {
+        border-left: 2px solid black;
+    }
+    
+    .derecha {
+        border-right: 2px solid black;
+    }
+
+    #botonera {        
+        flex-direction: row;                
+    }
+
+    #resolver,#borrar {
+        padding: 8px 16px;
+        margin: 15px;
+        font-size: 30px;        
+    }
+    
+}
