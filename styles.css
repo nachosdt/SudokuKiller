@@ -17,8 +17,7 @@
 
 body, html {
     width: 100%;
-    height: 100%; 
-    overflow: hidden;   
+    height: 100%;     
 }
 
 #fondo {
@@ -243,12 +242,7 @@ body, html {
 
 
 /* On screens that are 992px wide or less */
-@media screen and (max-width: 992px) {
-    html,body {
-        width: 100%;
-        height: 100%; 
-        overflow: auto;
-    }
+@media screen and (max-width: 992px) {    
 
     #fondo {
         width: auto;
